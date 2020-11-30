@@ -1,0 +1,84 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 560px;
+    height: 560px;
+    border: solid black;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.pac-dot {
+    background-color: gold;
+    border: 5px solid white;
+    box-sizing: border-box;
+}
+
+.wall {
+    background-color: black;
+}
+
+.power-pellet {
+    background-color: gold;
+    border-radius: 10px;
+}
+
+.blinky {
+    background-image: url(images/blinky.png);
+    background-size: cover;
+}
+
+.pinky {
+    background-image: url(images/pinky.png);
+    background-size: cover;
+}
+
+.inky {
+    background-image: url(images/inky.png);
+    background-size: cover;
+}
+
+.clyde {
+    background-image: url(images/clyde.png);
+    background-size: cover;
+}
+
+.pac-man {
+    background-image: url(images/pacman.png);
+    background-size: cover;
+}
+
+.pac-man.blinky {
+    background-image: url(images/blinky.png);
+}
+
+.pac-man.pinky {
+    background-image: url(images/pinky.png);
+}
+
+.pac-man.inky {
+    background-image: url(images/inky.png);
+}
+
+.pac-man.clyde {
+    background-image: url(images/clyde.png);
+}
+
+.scared-ghost {
+    background-image: url(images/blue.png);
+    background-size: cover;
+}
+
+.end {
+    font-family: 'Press Start 2P', cursive;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    font-size: 42px;
+    font-weight: bold;
+    color: darkgoldenrod;
+}
