@@ -46,24 +46,28 @@
     background-size: cover;
 }
 
-.pac-man {
+.pacman {
     background-image: url(images/pacman.png);
     background-size: cover;
 }
 
-.pac-man.blinky {
+.rotated {
+    transform: rotate(180deg);
+}
+
+.pacman.blinky {
     background-image: url(images/blinky.png);
 }
 
-.pac-man.pinky {
+.pacman.pinky {
     background-image: url(images/pinky.png);
 }
 
-.pac-man.inky {
+.pacman.inky {
     background-image: url(images/inky.png);
 }
 
-.pac-man.clyde {
+.pacman.clyde {
     background-image: url(images/clyde.png);
 }
 

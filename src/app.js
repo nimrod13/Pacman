@@ -75,7 +75,7 @@ createBoard();
 
 function drawPacman() {
     pacmanCurrentIndex = 490;
-    squares[pacmanCurrentIndex].classList.add('pac-man');
+    squares[pacmanCurrentIndex].classList.add('pacman');
 }
 
 function isWallAtNewPosition(index) {
@@ -84,7 +84,8 @@ function isWallAtNewPosition(index) {
 
 //move pacman
 function movePacman(e) {
-    squares[pacmanCurrentIndex].classList.remove('pac-man');
+    squares[pacmanCurrentIndex].classList.remove('pacman');
+    let isRotated = false;
 
     switch (e.keyCode) {
         case 37: //left
@@ -101,6 +102,7 @@ function movePacman(e) {
                 pacmanCurrentIndex = 391;
             }
 
+            isRotated = true;
             break;
         case 38: // up
             if (
@@ -127,6 +129,8 @@ function movePacman(e) {
                 pacmanCurrentIndex = 364;
             }
 
+            isRotated = false;
+
             break;
 
         case 40: // down
@@ -143,7 +147,13 @@ function movePacman(e) {
             break;
     }
 
-    squares[pacmanCurrentIndex].classList.add('pac-man');
+    squares[pacmanCurrentIndex].classList.add('pacman');
+
+    if (isRotated) {
+        squares[pacmanCurrentIndex].classList.add('rotated');
+    } else {
+        squares[pacmanCurrentIndex].classList.remove('rotated');
+    }
 
     pacDotEaten();
     powerPelletEaten();
@@ -218,7 +228,7 @@ function moveGhost(ghost) {
         }
 
         //if the ghost is currently scared and pacman is on it
-        if (ghost.isScared && squares[ghost.currentIndex].classList.contains('pac-man')) {
+        if (ghost.isScared && squares[ghost.currentIndex].classList.contains('pacman')) {
             squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost');
             ghost.currentIndex = ghost.startIndex;
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
@@ -255,7 +265,7 @@ function stopGame() {
 document.querySelector(".start-button").addEventListener("click", () => {
     end.textContent = "";
     score = 0;
-    squares.forEach(square => square.classList.remove('pac-man', 'ghost'));
+    squares.forEach(square => square.classList.remove('pacman', 'ghost'));
 
     ghosts.forEach(ghost => {
         squares[ghost.currentIndex].classList.remove(ghost.className);
