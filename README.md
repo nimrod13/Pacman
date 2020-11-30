@@ -1,2 +1,2 @@
 # Pacman
- Pacman simple javascript version
+ Pacman simple vanillajs version
