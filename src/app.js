@@ -85,7 +85,10 @@ function isWallAtNewPosition(index) {
 //move pacman
 function movePacman(e) {
     squares[pacmanCurrentIndex].classList.remove('pacman');
-    let isRotated = false;
+    let isGoingLeft = false;
+    let isGoingRight = false;
+    let isGoingUp = false;
+    let isGoingDown = false;
 
     switch (e.keyCode) {
         case 37: //left
@@ -102,7 +105,7 @@ function movePacman(e) {
                 pacmanCurrentIndex = 391;
             }
 
-            isRotated = true;
+            isGoingLeft = true;
             break;
         case 38: // up
             if (
@@ -113,6 +116,7 @@ function movePacman(e) {
                 pacmanCurrentIndex -= width;
             }
 
+            isGoingUp = true;
             break;
 
         case 39: // right
@@ -129,8 +133,7 @@ function movePacman(e) {
                 pacmanCurrentIndex = 364;
             }
 
-            isRotated = false;
-
+            isGoingRight = true;
             break;
 
         case 40: // down
@@ -142,6 +145,7 @@ function movePacman(e) {
                 pacmanCurrentIndex += width;
             }
 
+            isGoingDown = true;
             break;
         default:
             break;
@@ -149,10 +153,22 @@ function movePacman(e) {
 
     squares[pacmanCurrentIndex].classList.add('pacman');
 
-    if (isRotated) {
+    if (isGoingLeft) {
         squares[pacmanCurrentIndex].classList.add('rotated');
     } else {
         squares[pacmanCurrentIndex].classList.remove('rotated');
+    }
+
+    if (isGoingUp) {
+        squares[pacmanCurrentIndex].classList.add('up');
+    } else {
+        squares[pacmanCurrentIndex].classList.remove('up');
+    }
+
+    if (isGoingDown) {
+        squares[pacmanCurrentIndex].classList.add('down');
+    } else {
+        squares[pacmanCurrentIndex].classList.remove('down');
     }
 
     pacDotEaten();
@@ -253,7 +269,7 @@ function checkForGameOver() {
 function checkForWin() {
     if (score === 274) {
         stopGame();
-        end.textContent = "You have WON!";
+        end.textContent = "You WON :)";
     }
 }
 
