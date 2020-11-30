@@ -255,6 +255,13 @@ function stopGame() {
 document.querySelector(".start-button").addEventListener("click", () => {
     end.textContent = "";
     score = 0;
+    squares.forEach(square => square.classList.remove('pac-man', 'ghost'));
+
+    ghosts.forEach(ghost => {
+        squares[ghost.currentIndex].classList.remove(ghost.className);
+        ghost.currentIndex = ghost.startIndex;
+    });
+
     updateScore();
     drawCharacters();
     initGame();
