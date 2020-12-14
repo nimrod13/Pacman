@@ -234,7 +234,7 @@ function moveGhost(ghost) {
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
             //else find a new random direction to go in
         } else {
-            direction = possibleDirections[Math.floor(Math.random() * possibleDirections.length)];
+            direction = directions[Math.floor(Math.random() * directions.length)];
         }
 
         //if the ghost is currently scared
