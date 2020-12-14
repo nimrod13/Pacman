@@ -281,10 +281,10 @@ function stopGame() {
 document.querySelector(".start-button").addEventListener("click", () => {
     end.textContent = "";
     score = 0;
-    squares.forEach(square => square.classList.remove('pacman', 'ghost'));
+    squares.forEach(square => square.classList.remove('pacman'));
 
     ghosts.forEach(ghost => {
-        squares[ghost.currentIndex].classList.remove(ghost.className);
+        squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost');
         ghost.currentIndex = ghost.startIndex;
         clearInterval(ghost.timerId);
     });
