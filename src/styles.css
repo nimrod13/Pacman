@@ -17,6 +17,11 @@
     box-sizing: border-box;
 }
 
+.pac-dot.ghost {
+    border: none;
+    background-color: transparent;
+}
+
 .wall {
     background-color: black;
 }
@@ -51,15 +56,15 @@
     background-size: cover;
 }
 
-.rotated {
+.pacman.rotated {
     transform: rotate(180deg);
 }
 
-.up {
+.pacman.up {
     transform: rotate(270deg);
 }
 
-.down {
+.pacman.down {
     transform: rotate(90deg);
 }
 

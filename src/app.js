@@ -86,7 +86,6 @@ function isWallAtNewPosition(index) {
 function movePacman(e) {
     squares[pacmanCurrentIndex].classList.remove('pacman');
     let isGoingLeft = false;
-    let isGoingRight = false;
     let isGoingUp = false;
     let isGoingDown = false;
 
@@ -275,6 +274,7 @@ function checkForWin() {
 
 function stopGame() {
     ghosts.forEach(ghost => clearInterval(ghost.timerId));
+    squares[pacmanCurrentIndex].classList.remove('pacman');
     document.removeEventListener('keydown', movePacman);
 }
 
@@ -286,6 +286,7 @@ document.querySelector(".start-button").addEventListener("click", () => {
     ghosts.forEach(ghost => {
         squares[ghost.currentIndex].classList.remove(ghost.className);
         ghost.currentIndex = ghost.startIndex;
+        clearInterval(ghost.timerId);
     });
 
     updateScore();
