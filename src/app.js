@@ -221,7 +221,7 @@ function drawGhosts() {
 
 function moveGhost(ghost) {
     const directions = [-1, +1, width, -width];
-    let direction = directions[Math.floor(Math.random() * directions.length)];
+    let direction = ghost.currentIndex === ghost.startIndex ? -28 : directions[Math.floor(Math.random() * directions.length)];
 
     ghost.timerId = setInterval(function () {
         //if the next squre your ghost is going to go to does not have a ghost and does not have a wall
@@ -232,9 +232,9 @@ function moveGhost(ghost) {
             //move into that space
             ghost.currentIndex += direction;
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost');
-            //else find a new random direction ot go in
+            //else find a new random direction to go in
         } else {
-            direction = directions[Math.floor(Math.random() * directions.length)];
+            direction = possibleDirections[Math.floor(Math.random() * possibleDirections.length)];
         }
 
         //if the ghost is currently scared
@@ -266,7 +266,7 @@ function checkForGameOver() {
 
 // check for a win - more is when this score is reached
 function checkForWin() {
-    if (score === 274) {
+    if (score >= 274) {
         stopGame();
         end.textContent = "You WON :)";
     }
@@ -290,6 +290,6 @@ document.querySelector(".start-button").addEventListener("click", () => {
     });
 
     updateScore();
-    drawCharacters();
+    createBoard();
     initGame();
 });
